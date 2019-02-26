@@ -1,6 +1,11 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,url_for
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
+
+db = SQLAlchemy(app)
+
 name = 'Lili'
 movies = [
 {'title': 'My Neighbor Totoro', 'year': '1988'},
@@ -26,7 +31,7 @@ def user_page(name):
 
 @app.route('/test')
 def test_url_for():
-    print(url_for('hello'))
+    print(url_for('index'))
     print(url_for('user_page',name='Kii'))
     print(url_for('user_page',name='Lili'))
     print(url_for('test_url_for',num=2))
